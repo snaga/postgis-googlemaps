@@ -1,0 +1,462 @@
+#!/bin/sh
+
+DBNAME=gistest
+
+unzip ./data/P12-14_GML.zip
+
+pushd P12-14_GML
+
+find . -name '*.shp' |perl -e 's,./(..........).*,\1,' -p | awk '{ print "mv " $1 "*.shp " $1 ".shp" }' | sh
+find . -name '*.dbf' |perl -e 's,./(..........).*,\1,' -p | awk '{ print "mv " $1 "*.dbf " $1 ".dbf" }' | sh
+find . -name '*.shx' |perl -e 's,./(..........).*,\1,' -p | awk '{ print "mv " $1 "*.shx " $1 ".shx" }' | sh
+
+cat /dev/null > P12-14_GML.SQL
+
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_01.shp P12a_14_01 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_02.shp P12a_14_02 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_03.shp P12a_14_03 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_04.shp P12a_14_04 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_05.shp P12a_14_05 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_06.shp P12a_14_06 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_07.shp P12a_14_07 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_08.shp P12a_14_08 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_09.shp P12a_14_09 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_10.shp P12a_14_10 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_11.shp P12a_14_11 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_12.shp P12a_14_12 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_13.shp P12a_14_13 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_14.shp P12a_14_14 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_15.shp P12a_14_15 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_16.shp P12a_14_16 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_17.shp P12a_14_17 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_18.shp P12a_14_18 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_19.shp P12a_14_19 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_20.shp P12a_14_20 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_21.shp P12a_14_21 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_22.shp P12a_14_22 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_23.shp P12a_14_23 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_24.shp P12a_14_24 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_25.shp P12a_14_25 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_26.shp P12a_14_26 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_27.shp P12a_14_27 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_28.shp P12a_14_28 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_29.shp P12a_14_29 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_30.shp P12a_14_30 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_31.shp P12a_14_31 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_32.shp P12a_14_32 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_33.shp P12a_14_33 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_34.shp P12a_14_34 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_35.shp P12a_14_35 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_36.shp P12a_14_36 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_37.shp P12a_14_37 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_38.shp P12a_14_38 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_39.shp P12a_14_39 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_40.shp P12a_14_40 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_41.shp P12a_14_41 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_42.shp P12a_14_42 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_43.shp P12a_14_43 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_44.shp P12a_14_44 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_45.shp P12a_14_45 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_46.shp P12a_14_46 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12a-14_47.shp P12a_14_47 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_01.shp P12b_14_01 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_02.shp P12b_14_02 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_03.shp P12b_14_03 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_04.shp P12b_14_04 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_05.shp P12b_14_05 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_06.shp P12b_14_06 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_08.shp P12b_14_08 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_11.shp P12b_14_11 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_15.shp P12b_14_15 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_16.shp P12b_14_16 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_17.shp P12b_14_17 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_19.shp P12b_14_19 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_20.shp P12b_14_20 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_21.shp P12b_14_21 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_22.shp P12b_14_22 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_24.shp P12b_14_24 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_25.shp P12b_14_25 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_26.shp P12b_14_26 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_28.shp P12b_14_28 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_29.shp P12b_14_29 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_30.shp P12b_14_30 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_32.shp P12b_14_32 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_33.shp P12b_14_33 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_34.shp P12b_14_34 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_35.shp P12b_14_35 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_36.shp P12b_14_36 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_38.shp P12b_14_38 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_39.shp P12b_14_39 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_43.shp P12b_14_43 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_44.shp P12b_14_44 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_45.shp P12b_14_45 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12b-14_47.shp P12b_14_47 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_01.shp P12c_14_01 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_02.shp P12c_14_02 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_03.shp P12c_14_03 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_04.shp P12c_14_04 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_05.shp P12c_14_05 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_06.shp P12c_14_06 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_07.shp P12c_14_07 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_08.shp P12c_14_08 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_09.shp P12c_14_09 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_10.shp P12c_14_10 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_11.shp P12c_14_11 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_12.shp P12c_14_12 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_13.shp P12c_14_13 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_14.shp P12c_14_14 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_15.shp P12c_14_15 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_17.shp P12c_14_17 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_18.shp P12c_14_18 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_19.shp P12c_14_19 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_20.shp P12c_14_20 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_21.shp P12c_14_21 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_22.shp P12c_14_22 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_23.shp P12c_14_23 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_24.shp P12c_14_24 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_25.shp P12c_14_25 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_26.shp P12c_14_26 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_27.shp P12c_14_27 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_28.shp P12c_14_28 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_29.shp P12c_14_29 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_30.shp P12c_14_30 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_31.shp P12c_14_31 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_32.shp P12c_14_32 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_33.shp P12c_14_33 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_34.shp P12c_14_34 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_35.shp P12c_14_35 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_36.shp P12c_14_36 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_37.shp P12c_14_37 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_38.shp P12c_14_38 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_39.shp P12c_14_39 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_40.shp P12c_14_40 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_41.shp P12c_14_41 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_42.shp P12c_14_42 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_43.shp P12c_14_43 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_44.shp P12c_14_44 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_45.shp P12c_14_45 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_46.shp P12c_14_46 >> P12-14_GML.SQL
+shp2pgsql -W cp932 -D -I -s 4612 ./P12c-14_47.shp P12c_14_47 >> P12-14_GML.SQL
+
+psql -f P12-14_GML.SQL $DBNAME
+
+popd
+
+rm -rf P12-14_GML
+
+psql $DBNAME<<EOF
+DROP TABLE p12_14;
+
+CREATE TABLE p12_14 AS
+SELECT
+  NULL::INTEGER AS "観光資源ID",
+  NULL::TEXT AS "観光資源名",
+  NULL::CHAR(2) AS "都道府県コード",
+  NULL::CHAR(5)[] AS "行政コード",
+  NULL::TEXT AS "種別名称",
+  NULL::TEXT AS "所在地住所",
+  -- '-1' と '99' が存在するため、
+  -- CHAR(1)ではなくNUMERIC(2)とする。
+  NULL::NUMERIC(2) AS "観光資源分類コード",
+  NULL::GEOMETRY AS geom
+FROM
+  p12a_14_01
+LIMIT 0;
+
+BEGIN;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_01;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_01;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_01;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_02;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_02;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_02;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_03;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_03;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_03;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_04;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_04;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_04;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_05;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_05;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_05;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_06;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_06;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_06;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_07;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_07;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_07;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_08;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_08;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_08;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_09;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_09;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_09;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_10;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_10;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_10;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_11;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_11;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_11;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_12;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_12;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_12;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_13;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_13;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_13;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_14;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_14;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_14;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_15;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_15;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_15;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_16;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_16;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_16;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_17;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_17;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_17;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_18;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_18;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_18;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_19;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_19;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_19;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_20;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_20;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_20;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_21;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_21;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_21;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_22;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_22;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_22;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_23;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_23;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_23;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_24;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_24;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_24;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_25;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_25;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_25;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_26;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_26;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_26;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_27;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_27;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_27;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_28;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_28;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_28;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_29;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_29;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_29;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_30;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_30;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_30;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_31;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_31;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_31;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_32;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_32;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_32;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_33;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_33;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_33;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_34;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_34;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_34;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_35;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_35;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_35;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_36;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_36;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_36;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_37;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_37;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_37;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_38;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_38;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_38;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_39;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_39;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_39;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_40;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_40;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_40;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_41;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_41;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_41;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_42;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_42;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_42;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_43;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_43;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_43;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_44;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_44;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_44;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_45;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_45;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_45;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_46;
+--INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_46;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_46;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12a_14_47;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12b_14_47;
+INSERT INTO p12_14 SELECT P12_001,P12_002,P12_003,regexp_split_to_array(P12_004, '、')::char(5)[],P12_005,P12_006,P12_007,geom FROM p12c_14_47;
+COMMIT;
+
+-- 重複があるため主キーは張れない。
+--ALTER TABLE p12_14 ADD PRIMARY KEY ("都道府県コード","観光資源ID");
+
+CREATE INDEX p12_14_idx ON p12_14 ("都道府県コード","観光資源ID");
+
+BEGIN;
+DROP TABLE p12a_14_01;
+DROP TABLE p12b_14_01;
+DROP TABLE p12c_14_01;
+DROP TABLE p12a_14_02;
+DROP TABLE p12b_14_02;
+DROP TABLE p12c_14_02;
+DROP TABLE p12a_14_03;
+DROP TABLE p12b_14_03;
+DROP TABLE p12c_14_03;
+DROP TABLE p12a_14_04;
+DROP TABLE p12b_14_04;
+DROP TABLE p12c_14_04;
+DROP TABLE p12a_14_05;
+DROP TABLE p12b_14_05;
+DROP TABLE p12c_14_05;
+DROP TABLE p12a_14_06;
+DROP TABLE p12b_14_06;
+DROP TABLE p12c_14_06;
+DROP TABLE p12a_14_07;
+--DROP TABLE p12b_14_07;
+DROP TABLE p12c_14_07;
+DROP TABLE p12a_14_08;
+DROP TABLE p12b_14_08;
+DROP TABLE p12c_14_08;
+DROP TABLE p12a_14_09;
+--DROP TABLE p12b_14_09;
+DROP TABLE p12c_14_09;
+DROP TABLE p12a_14_10;
+--DROP TABLE p12b_14_10;
+DROP TABLE p12c_14_10;
+DROP TABLE p12a_14_11;
+DROP TABLE p12b_14_11;
+DROP TABLE p12c_14_11;
+DROP TABLE p12a_14_12;
+--DROP TABLE p12b_14_12;
+DROP TABLE p12c_14_12;
+DROP TABLE p12a_14_13;
+--DROP TABLE p12b_14_13;
+DROP TABLE p12c_14_13;
+DROP TABLE p12a_14_14;
+--DROP TABLE p12b_14_14;
+DROP TABLE p12c_14_14;
+DROP TABLE p12a_14_15;
+DROP TABLE p12b_14_15;
+DROP TABLE p12c_14_15;
+DROP TABLE p12a_14_16;
+DROP TABLE p12b_14_16;
+--DROP TABLE p12c_14_16;
+DROP TABLE p12a_14_17;
+DROP TABLE p12b_14_17;
+DROP TABLE p12c_14_17;
+DROP TABLE p12a_14_18;
+--DROP TABLE p12b_14_18;
+DROP TABLE p12c_14_18;
+DROP TABLE p12a_14_19;
+DROP TABLE p12b_14_19;
+DROP TABLE p12c_14_19;
+DROP TABLE p12a_14_20;
+DROP TABLE p12b_14_20;
+DROP TABLE p12c_14_20;
+DROP TABLE p12a_14_21;
+DROP TABLE p12b_14_21;
+DROP TABLE p12c_14_21;
+DROP TABLE p12a_14_22;
+DROP TABLE p12b_14_22;
+DROP TABLE p12c_14_22;
+DROP TABLE p12a_14_23;
+--DROP TABLE p12b_14_23;
+DROP TABLE p12c_14_23;
+DROP TABLE p12a_14_24;
+DROP TABLE p12b_14_24;
+DROP TABLE p12c_14_24;
+DROP TABLE p12a_14_25;
+DROP TABLE p12b_14_25;
+DROP TABLE p12c_14_25;
+DROP TABLE p12a_14_26;
+DROP TABLE p12b_14_26;
+DROP TABLE p12c_14_26;
+DROP TABLE p12a_14_27;
+--DROP TABLE p12b_14_27;
+DROP TABLE p12c_14_27;
+DROP TABLE p12a_14_28;
+DROP TABLE p12b_14_28;
+DROP TABLE p12c_14_28;
+DROP TABLE p12a_14_29;
+DROP TABLE p12b_14_29;
+DROP TABLE p12c_14_29;
+DROP TABLE p12a_14_30;
+DROP TABLE p12b_14_30;
+DROP TABLE p12c_14_30;
+DROP TABLE p12a_14_31;
+--DROP TABLE p12b_14_31;
+DROP TABLE p12c_14_31;
+DROP TABLE p12a_14_32;
+DROP TABLE p12b_14_32;
+DROP TABLE p12c_14_32;
+DROP TABLE p12a_14_33;
+DROP TABLE p12b_14_33;
+DROP TABLE p12c_14_33;
+DROP TABLE p12a_14_34;
+DROP TABLE p12b_14_34;
+DROP TABLE p12c_14_34;
+DROP TABLE p12a_14_35;
+DROP TABLE p12b_14_35;
+DROP TABLE p12c_14_35;
+DROP TABLE p12a_14_36;
+DROP TABLE p12b_14_36;
+DROP TABLE p12c_14_36;
+DROP TABLE p12a_14_37;
+--DROP TABLE p12b_14_37;
+DROP TABLE p12c_14_37;
+DROP TABLE p12a_14_38;
+DROP TABLE p12b_14_38;
+DROP TABLE p12c_14_38;
+DROP TABLE p12a_14_39;
+DROP TABLE p12b_14_39;
+DROP TABLE p12c_14_39;
+DROP TABLE p12a_14_40;
+--DROP TABLE p12b_14_40;
+DROP TABLE p12c_14_40;
+DROP TABLE p12a_14_41;
+--DROP TABLE p12b_14_41;
+DROP TABLE p12c_14_41;
+DROP TABLE p12a_14_42;
+--DROP TABLE p12b_14_42;
+DROP TABLE p12c_14_42;
+DROP TABLE p12a_14_43;
+DROP TABLE p12b_14_43;
+DROP TABLE p12c_14_43;
+DROP TABLE p12a_14_44;
+DROP TABLE p12b_14_44;
+DROP TABLE p12c_14_44;
+DROP TABLE p12a_14_45;
+DROP TABLE p12b_14_45;
+DROP TABLE p12c_14_45;
+DROP TABLE p12a_14_46;
+--DROP TABLE p12b_14_46;
+DROP TABLE p12c_14_46;
+DROP TABLE p12a_14_47;
+DROP TABLE p12b_14_47;
+DROP TABLE p12c_14_47;
+COMMIT;
+
+SELECT "都道府県コード",COUNT(*)
+FROM p12_14
+GROUP BY 1 ORDER BY 1;
+EOF
