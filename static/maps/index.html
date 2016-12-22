@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>観光マップ feat. オープンデータ</title>
+    <style type="text/css">
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #map { height: 100%; }
+        h1 { font-family: meiryo, "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+            font-weight: 300; font-size: large; display:inline;}
+        @media only screen and (min-width: 768px) {
+            .container { width:90%; height:90%; padding: 0; }
+            .notice { text-align: right; font-size: small; }
+        }
+        @media only screen and (max-width: 767px) {
+            .container { width:100%; height:85%; padding: 0; margin: 0; }
+            .notice { text-align: right; font-size: x-small; }
+        }
+    </style>
+</head>
+<body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<div class="container">
+    <div class="row">
+            <div class="col-md-6" style="padding: 10px 0px 10px 15px"><h1>観光マップ feat. オープンデータ</h1> <div id="status" align="right"><span class="glyphicon glyphicon-hourglass" aria-hidden="true" style="color: #eb6b56"></span></div></div>
+    </div>
+
+    <div class="row" style="width:100%; height:100%">
+        <div class="col-md-12" id="map"></div>
+    </div>
+
+        <div class="row">
+        <div class="col-md-12"><div class="notice">
+本サイトでは国土交通省の公開している「<a href="http://nlftp.mlit.go.jp/ksj/index.html" target="_blank">国土数値情報</a>」を利用しています。
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+var map;
+var timeoutID = null;
+var markers = [];
+var descriptions = [];
+var infowindow = null;
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 35.659, lng: 139.700},
+        zoom: 10
+    });
+    
+    map.addListener('bounds_changed', function() {
+        var bounds = map.getBounds();
+        var sw = bounds.getSouthWest();
+        var ne = bounds.getNorthEast();
+        if (timeoutID > 0) {
+            window.clearTimeout(timeoutID);   
+        }
+        timeoutID = window.setTimeout(function() {
+            // load new markers.
+            latlon = sw.lat() + "," + sw.lng() + "," + ne.lat() + "," + ne.lng();
+            console.log("latlon = " + latlon);
+            // '35.09253662991008,138.36016149520879,36.16519333564296,140.99688024520879'
+            document.getElementById("status").style.display = "inline";
+
+            $.getJSON('/map/loc', { latlon: latlon }).done(function(data) {
+                console.log("data.length: " + data.length);
+                len = data.length;
+                if (data.length > 100) {
+//                    alert("エリア上に101以上の情報があります。\nズームして絞り込んでください。");
+                    len = 100;
+                }
+
+                // 既存のマーカーが新しいマーカーのセットに含まれるかを確認する。
+                // 含まれないのであればマップから削除する。
+                for (var i = 0; i < markers.length; i++) {
+                    if (markers[i] == null) {
+                        continue;
+                    }
+                    var found = false;
+                    for (var j = 0; j < len; j++) {
+                        if (data[j] == null) {
+                            continue;
+                        }
+                        pos = new google.maps.LatLng(data[j].lat, data[j].lon);
+                        if (markers[i].position.lat() == pos.lat() && markers[i].position.lng() == pos.lng()) {
+                            found = true;
+                            data[j] = null;
+                        }
+                    }
+                    if (!found) {
+                        console.log("removing markers[" + i + "]" + markers[i].title);
+                        markers[i].setMap(null);
+                        markers[i] = null;
+                        descriptions[i] = null;
+                    }
+                }
+
+                console.log("data.length: " + data.length);
+                for (var i = 0; i < len; i++) {
+                    // すでにマップ上にマーカーがある場合は追加処理をスキップ。
+                    if (data[i] == null) {
+                        console.log("skipping data[" + i + "]");
+                        continue;
+                    }
+                    pos = new google.maps.LatLng(data[i].lat, data[i].lon);
+
+                    console.log("[" + i + "] " + data[i].label + " latlon=" + data[i].lat + "," + data[i].lon);
+                    label = data[i].label;
+                    if (data[i].category.length > 0) {
+                        label = label + " ― " + data[i].category;
+                    }
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        title: label
+                    });
+                    marker.setMap(map);
+
+                    // マーカーの配列の中で空いているところに新しいマーカーを追加する。
+                    // 空きが無ければ配列の最後に追加する。
+                    console.log("adding data[" + i + "]" + data[i].label);
+                    var done = false;
+                    for (var j = 0; j < markers.length; j++) {
+                        if (markers[j] == null) {
+                            markers[j] = marker;
+                            descriptions[j] = {label: data[i].label, pref: data[i].pref, address: data[i].address, category: data[i].category };
+                            done = true;
+                            break;
+                        }
+                    }
+                    if (!done) {
+                        markers.push(marker);
+                        descriptions.push({label: data[i].label, pref: data[i].pref, address: data[i].address, category: data[i].category });
+                    }
+                    
+                    google.maps.event.addListener(marker, 'click', function (event) {
+                        if (infowindow) {
+                            infowindow.close();
+                            infowindow = null;
+                        }
+                        console.log(event);
+                        for (var i = 0; i < markers.length; i++) {
+                            if (markers[i] == null) {
+                                continue;
+                            }
+                            if (markers[i].position == event.latLng) {
+                                marker = markers[i];
+                                desc = descriptions[i];
+                                break;
+                            }
+                        }
+                        console.log(marker);
+                        c = "";
+                        if (desc.category.length > 0) {
+                            c = "<br/>" + desc.category + ""
+                        }
+                        infowindow = new google.maps.InfoWindow({
+                            content: "" + desc.label + "<br/>" + desc.pref + " " + desc.address + c + "<br/>" + "<a href='https://google.com/search?q=" + desc.pref + " " + desc.label + "' target='_blank'>Webで検索</a>"
+                        });
+                        infowindow.open(map, marker);
+                    });
+                }
+                document.getElementById("status").style.display = "none";
+            }); // $.getJSON()
+//            alert("South-West: " + sw.toString() + "\n" + "North-East: " + ne.toString());
+        }, 1000); // setTimeout()
+    });
+}
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTQMymzJ7qsQnaPLoZ4troV-Bboydb-9c&callback=initMap">
+    </script>
+</body>
+</html>
