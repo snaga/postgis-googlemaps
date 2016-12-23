@@ -21,6 +21,7 @@ def map_loc():
     m = pgmap.MapSearch(host=pghost, port=pgport, user=pguser, passwd=pgpass, dbname=dbname, sslmode="require")
     
     d = request.args.get('latlon').split(',')
+    d = [float(v) for v in d]
     return json.dumps(m.search(d[0], d[1], d[2], d[3]))
 
 @app.route('/')

@@ -29,11 +29,11 @@ class MapSearch():
             return None
 
         line = []
-        line.append('%s %s' % (lon1, lat1))
-        line.append('%s %s' % (lon1, lat2))
-        line.append('%s %s' % (lon2, lat2))
-        line.append('%s %s' % (lon2, lat1))
-        line.append('%s %s' % (lon1, lat1))
+        line.append('%f %f' % (lon1, lat1))
+        line.append('%f %f' % (lon1, lat2))
+        line.append('%f %f' % (lon2, lat2))
+        line.append('%f %f' % (lon2, lat1))
+        line.append('%f %f' % (lon1, lat1))
 
         try:
             query = u"""
